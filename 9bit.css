@@ -88,7 +88,7 @@ input[type="file"] {
     padding: 20px 10px;
     display: flex;
     flex-direction: column;
-    border-right: 1px solid #ddd;
+    border-right: 3px solid #ddd;
 }
 
 /* 중앙 콘텐츠 영역 */
@@ -106,6 +106,7 @@ input[type="file"] {
     top: 0;
     left: 0;
     z-index: 1000;
+    border-bottom: 3px solid #ddd;
 }
 
 .main-content .header h3 {
@@ -151,7 +152,7 @@ input[type="file"] {
     background-color: #ecf0f1;
     padding: 20px;
     overflow-y: auto;
-    border-left: 1px solid #ddd;
+    border-left: 3px solid #ddd;
 }
 
 .right-sidebar ul {
@@ -180,7 +181,6 @@ input[type="file"] {
 }
 
 .right-sidebar ul ul li {
-    background-color: #fff;
     padding: 6px 10px;
     margin-bottom: 4px;
     font-weight: normal;
@@ -420,18 +420,21 @@ input[type="file"] {
 
 .item-container {
     max-height: 99999px;
-    overflow: hidden;
     opacity: 1;
-    padding: 0 20px 0 20px;
+    padding: 0 20px;
     transform: translateY(0);
-    transition: all 0.5s ease;
+    overflow: hidden;
+    transition:
+        max-height 0.2s ease,
+        opacity 0.2s ease,
+        transform 0.3s ease,
+        padding 0.3s ease;
 }
 
 .item-container.hidden {
     max-height: 0;
     opacity: 0;
-    transform: translateY(-10px);
-    /* 위로 올라가면서 사라지는 효과 */
+    transform: translateY(-12px);
     padding-top: 0;
     padding-bottom: 0;
 }
@@ -475,6 +478,7 @@ input[type="file"] {
     background-color: #eaf2ff;
     font-weight: bold;
     color: #007aff;
+    border-radius: 20px;
 }
 
 .checklist-btn-div {

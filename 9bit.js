@@ -353,6 +353,9 @@ function move_tag(id) {
         } else {
             const parentId = $target.closest(".div").attr("id");
             $(`#${parentId} .item-container`).removeClass("hidden");
+
+            $(`#${parentId} .div-header .toggle-btn span`).text("keyboard_arrow_up");
+
             active_div(parentId);
         }
 
