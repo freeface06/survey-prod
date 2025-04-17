@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>구비트 안전점검</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 외부 CSS 파일이 있다면 연결 -->
+    <link rel="stylesheet" type="text/css" media="screen" href="9bit.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="9bit.js"></script>
+    <!-- Material Symbols Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <!-- jsDelivr :: Sortable :: Latest (https://www.jsdelivr.com/package/npm/sortablejs) -->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- 왼쪽 버튼 바 -->
+        <div class="left-sidebar">
+            <button id="add_div" onclick="add_component('div')"><span class="material-symbols-outlined">
+                    list
+                </span>구분추가</button>
+            <button class="item-btn" id="add_short_text" onclick="add_component('short_text')"><span
+                    class="material-symbols-outlined">
+                    variables
+                </span>짧은 답변(텍스트)</button>
+            <button class="item-btn" id="add_long_text" onclick="add_component('long_text')"><span
+                    class="material-symbols-outlined">
+                    square
+                </span>긴 답변(텍스트)</button>
+            <button class="item-btn" id="add_checkbox" onclick="add_component('check')"><span
+                    class="material-symbols-outlined">
+                    check_box
+                </span>다중선택(체크박스)</button>
+            <button class="item-btn" id="add_radiobox" onclick="add_component('radio')"><span
+                    class="material-symbols-outlined">
+                    radio_button_checked
+                </span>단일선택(라디오박스)</button>
+        </div>
+
+        <!-- 중앙 본문 콘텐츠 영역 -->
+        <div class="main-content">
+            <div class="header">
+                <h3>본문내용</h3>
+                <button onclick="save()">작성완료</button>
+            </div>
+
+            <div class="content">
+                <h4>제목<span class="required">*</span></h4>
+                <input type="text" placeholder="(필수) 제목을 입력하세요" name="title" id="title">
+
+                <h4>설명</h4>
+                <input type="text" placeholder="설명을 입력하세요" name="sub_title" id="sub_title">
+
+                <div class="checklist-btn-div">
+                    <button class="close-btn">전체닫기</button>
+                    <button class="open-btn">전체열기</button>
+                </div>
+
+                <div class="checklist-body">
+                    <div class="div active" id="div_1">
+                        <div class="div-header">
+                            <span class="material-symbols-outlined drag_handle outer-handle">
+                                drag_handle
+                            </span>
+                            <button class="toggle-btn">
+                                <span class="material-symbols-outlined">
+                                    keyboard_arrow_up
+                                </span>
+                            </button>
+                            <button class="delete-btn">
+                                <span class="material-symbols-outlined">
+                                    delete
+                                </span>
+                            </button>
+                            <input type="text" placeholder="(필수) 구분 제목을 입력하세요" name="div_title">
+                            <input type="text" placeholder="구분 설명을 입력하세요" name="div_sub_title">
+                        </div>
+
+                        <div class="item-container"></div>
+                    </div>
+                </div>
+
+                <div class="footer">
+                    <h4>끝인사</h4>
+                    <textarea placeholder="끝인사를 입력하세요" name="footer"></textarea>
+                </div>
+
+                <button id="scrollToTopBtn"><span class="material-symbols-outlined">
+                        arrow_upward
+                    </span></button>
+            </div>
+        </div>
+
+        <!-- 오른쪽 목록 영역 -->
+        <div class="right-sidebar">
+            <div id="right_sidebar">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="div" style="display: none;" id="add_div_content">
+        <div class="div-header">
+            <span class="material-symbols-outlined drag_handle outer-handle">
+                drag_handle
+            </span>
+            <button class="toggle-btn">
+                <span class="material-symbols-outlined">
+                    keyboard_arrow_up
+                </span>
+            </button>
+            <button class="delete-btn">
+                <span class="material-symbols-outlined">
+                    delete
+                </span>
+            </button>
+            <input type="text" placeholder="(필수) 구분 제목을 입력하세요" name="div_title">
+            <input type="text" placeholder="구분 설명을 입력하세요" name="div_sub_title">
+        </div>
+
+        <div class="item-container"></div>
+    </div>
+
+    <div type="short" class="item" style="display: none;" id="add_short_text_content">
+        <div class="item-header">
+            <span class="material-symbols-outlined drag_handle inner-handle">
+                drag_handle
+            </span>
+            <span class="required-label">
+                <label class="switch">
+                    <input type="checkbox" class="is-required">
+                    <span class="slider"></span>
+                </label>
+                <span>[필수]</span>
+            </span>
+
+            <span><b>짧은 답변(텍스트)</b></span>
+
+            <button class="delete-btn">
+                <span class="material-symbols-outlined">
+                    delete
+                </span>
+            </button>
+        </div>
+
+        <input type="text" placeholder="질문 제목을 입력하세요" name="item_title">
+        <button class="add-img-btn"> <span class="material-symbols-outlined">
+                add_photo_alternate
+            </span>이미지추가</button>
+
+        <div class="img-box">
+            <div class="img-list">
+
+            </div>
+            <input type="file" class="imgUploader" accept="image/*" multiple>
+
+        </div>
+    </div>
+
+    <div type="long" class="item" style="display: none;" id="add_long_text_content">
+        <div class="item-header">
+            <span class="material-symbols-outlined drag_handle inner-handle">
+                drag_handle
+            </span>
+            <span class="required-label">
+                <label class="switch">
+                    <input type="checkbox" class="is-required">
+                    <span class="slider"></span>
+                </label>
+                <span>[필수]</span>
+            </span>
+            <span><b>긴 답변(텍스트)</b></span>
+
+            <button class="delete-btn">
+                <span class="material-symbols-outlined">
+                    delete
+                </span>
+            </button>
+        </div>
+
+        <input type="text" placeholder="질문 제목을 입력하세요" name="item_title">
+        <button class="add-img-btn"> <span class="material-symbols-outlined">
+                add_photo_alternate
+            </span>이미지추가</button>
+
+        <div class="img-box">
+            <div class="img-list">
+
+            </div>
+            <input type="file" class="imgUploader" accept="image/*" multiple>
+
+        </div>
+    </div>
+
+    <div type="checkbox" class="item" style="display: none;" id="add_checkbox_content">
+        <div class="item-header">
+            <span class="material-symbols-outlined drag_handle inner-handle">
+                drag_handle
+            </span>
+
+            <span class="required-label">
+                <label class="switch">
+                    <input type="checkbox" class="is-required">
+                    <span class="slider"></span>
+                </label>
+                <span>[필수]</span>
+            </span>
+
+            <span><b>다중선택(체크박스)</b></span>
+
+            <button class="delete-btn">
+                <span class="material-symbols-outlined">
+                    delete
+                </span>
+            </button>
+        </div>
+
+        <input type="text" placeholder="질문 제목을 입력하세요" name="item_title">
+        <div>
+            <button class="append-checkbox-btn"><span class="material-symbols-outlined">
+                    docs_add_on
+                </span>항목추가</button>
+            <div class="checkbox-item">
+                <input type="checkbox" disabled><input type="text" placeholder="항목 제목을 입력하세요" class="checkbox-title"
+                    value=""><span class="material-symbols-outlined delete">
+                    close
+                </span>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" disabled><input type="text" placeholder="항목 제목을 입력하세요"
+                    class="checkbox-title"><span class="material-symbols-outlined delete">
+                    close
+                </span>
+            </div>
+        </div>
+
+        <button class="add-img-btn"> <span class="material-symbols-outlined">
+                add_photo_alternate
+            </span>이미지추가</button>
+
+        <div class="img-box">
+            <div class="img-list">
+
+            </div>
+            <input type="file" class="imgUploader" accept="image/*" multiple>
+
+        </div>
+    </div>
+
+
+    <div type="radio" class="item" style="display: none;" id="add_radiobox_content">
+        <div class="item-header">
+            <span class="material-symbols-outlined drag_handle inner-handle">
+                drag_handle
+            </span>
+            <span class="required-label">
+                <label class="switch">
+                    <input type="checkbox" class="is-required">
+                    <span class="slider"></span>
+                </label>
+                <span>[필수]</span>
+            </span>
+            <span><b>단일선택(라디오박스)</b></span>
+
+            <button class="delete-btn">
+                <span class="material-symbols-outlined delete">
+                    delete
+                </span>
+            </button>
+        </div>
+
+        <input type="text" placeholder="질문 제목을 입력하세요" name="item_title">
+        <div>
+            <button class="append-radiobox-btn"><span class="material-symbols-outlined">
+                    docs_add_on
+                </span>항목추가</button>
+            <div class="radiobox-item">
+                <input type="radio" disabled><input type="text" placeholder="항목 제목을 입력하세요" class="radiobox-title"> <span
+                    class="material-symbols-outlined delete">
+                    close
+                </span>
+            </div>
+            <div class="radiobox-item">
+                <input type="radio" disabled><input type="text" placeholder="항목 제목을 입력하세요" class="radiobox-title"> <span
+                    class="material-symbols-outlined delete">
+                    close
+                </span>
+            </div>
+        </div>
+
+        <button class="add-img-btn"> <span class="material-symbols-outlined">
+                add_photo_alternate
+            </span>이미지추가</button>
+
+        <div class="img-box">
+            <div class="img-list">
+
+            </div>
+            <input type="file" class="imgUploader" accept="image/*" multiple>
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>

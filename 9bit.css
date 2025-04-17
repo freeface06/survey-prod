@@ -1,0 +1,590 @@
+/* 기본 리셋 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    background-color: #f5f6f8;
+    line-height: 1.6;
+}
+
+/* 입력 폼 스타일 */
+input[type="text"],
+textarea {
+    font-size: 14px;
+    padding: 10px;
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    width: 100%;
+    margin-bottom: 10px;
+    transition: border-color 0.3s;
+    resize: none !important;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+/* textarea: 수직 리사이즈 허용 (필요에 따라 조절) */
+textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.required {
+    color: red;
+    font-size: 14px;
+    font-weight: bolder;
+    margin-left: 5px;
+}
+
+/* 왼쪽 사이드바 내부: 아이콘과 텍스트 세로 가운데 정렬 */
+.left-sidebar button {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.left-sidebar button:hover {
+    background-color: #2980b9;
+}
+
+/* 왼쪽 사이드바 내 .item-btn: 아이콘 있는 항목의 여백 조절 */
+.left-sidebar .item-btn {
+    margin-left: 30px;
+    width: calc(100% - 30px);
+}
+
+/* 전체 컨테이너: 좌, 중, 우 영역 레이아웃 */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* 왼쪽 사이드바 */
+.left-sidebar {
+    width: 15%;
+    background-color: #f0f0f0;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #ddd;
+}
+
+/* 중앙 콘텐츠 영역 */
+.main-content {
+    flex: 1;
+    overflow-y: auto;
+    background-color: #ffffff;
+}
+
+.main-content .header {
+    padding: 20px;
+    background-color: #f0f0f0;
+    height: 80px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.main-content .header h3 {
+    float: left;
+}
+
+.main-content .header button {
+    float: right;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.main-content .header button:hover {
+    background-color: #2980b9;
+}
+
+.main-content .content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* 또는 원하는 높이 */
+    padding: 20px;
+}
+
+.content .footer {
+    margin-top: auto;
+}
+
+/* 오른쪽 목록 영역 */
+.right-sidebar {
+    width: 15%;
+    background-color: #ecf0f1;
+    padding: 20px;
+    overflow-y: auto;
+    border-left: 1px solid #ddd;
+}
+
+.right-sidebar ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    color: #333;
+    cursor: pointer;
+}
+
+.right-sidebar>ul>li {
+    padding: 10px 12px;
+    background-color: #f9f9f9;
+    margin-bottom: 8px;
+    border-left: 4px solid #6496d5;
+    font-weight: bold;
+    border-radius: 6px;
+    position: relative;
+}
+
+.right-sidebar ul ul {
+    margin-top: 8px;
+    margin-left: 10px;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+.right-sidebar ul ul li {
+    background-color: #fff;
+    padding: 6px 10px;
+    margin-bottom: 4px;
+    font-weight: normal;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+}
+
+.right-sidebar hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 4px dashed #ccc;
+}
+
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    margin-right: 6px;
+}
+
+.badge-1depth {
+    background-color: #6496d5;
+}
+
+.badge-2depth {
+    background-color: #a6c3e6;
+}
+
+
+/* 드래그 핸들 */
+.drag_handle {
+    cursor: move;
+}
+
+/* 체크리스트 영역 */
+.checklist-body {
+    padding: 20px;
+    padding-top: 8px;
+}
+
+.checklist-body .div {
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+}
+
+.delete-btn,
+.toggle-btn {
+    cursor: pointer;
+    float: right;
+    border: none;
+    background: none;
+    padding-left: 20px;
+}
+
+.delete-btn span {
+    font-size: 20px;
+}
+
+.toggle-btn span {
+    font-size: 25px;
+}
+
+/* 항목 영역 */
+.checklist-body .item {
+    padding: 20px;
+    border: 3px solid #e6ebf0;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+/* 이미지 업로드 박스 */
+.img-box {
+    border: 4px dashed #ccc;
+    background-color: #f6f6f6;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    min-height: 100px;
+    position: relative;
+}
+
+.item-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.item-header .delete-btn {
+    position: absolute;
+    right: 0;
+    margin-left: auto;
+}
+
+.add-img-btn {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.add-img-text {
+    color: #999999;
+}
+
+/* 이미지 미리보기 영역: 가로 배치, 공간 부족 시 줄바꿈 */
+.img-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.img-box {
+    display: none;
+}
+
+/* 각 미리보기 아이템은 상대 위치로 설정 */
+.preview-item {
+    position: relative;
+    width: 100px;
+    border: 1px solid #ddd;
+}
+
+.preview-item img {
+    width: 100%;
+}
+
+/* 개별 삭제 버튼 (X 버튼)을 오른쪽 상단에 고정 */
+.remove-preview-btn {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 2px 6px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.remove-preview-btn span {
+    font-size: 12px;
+}
+
+.div.active {
+    background-color: rgba(100, 150, 213, 0.1);
+    border: 3px solid #007aff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.append-checkbox-btn,
+.append-radiobox-btn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.checkbox-item,
+.radiobox-item {
+    padding-left: 20px;
+}
+
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    /* flex 컨테이너 내에서 수직 가운데 정렬 */
+}
+
+.radiobox-item {
+    display: flex;
+    align-items: center;
+    padding-bottom: 8px;
+    /* flex 컨테이너 내에서 수직 가운데 정렬 */
+}
+
+.checkbox-item input.checkbox-title {
+    flex: 1;
+    /* 남은 공간을 모두 차지 */
+    margin: 0 8px;
+    /* radio와 아이콘 사이에 약간의 간격 추가 (원하는 값으로 조절) */
+}
+
+.radiobox-item input.radiobox-title {
+    flex: 1;
+    /* 남은 공간을 모두 차지 */
+    margin: 0 8px;
+    /* radio와 아이콘 사이에 약간의 간격 추가 (원하는 값으로 조절) */
+}
+
+.radiobox-item .delete {
+    cursor: pointer;
+}
+
+.checkbox-item .delete {
+    cursor: pointer;
+}
+
+.required-label {
+    padding-right: 10px;
+    padding-left: 10px;
+    display: flex;
+    vertical-align: middle;
+    align-items: center;
+}
+
+.required-label span {
+    color: red;
+    padding-left: 5px;
+}
+
+.item-container {
+    max-height: 99999px;
+    overflow: hidden;
+    opacity: 1;
+    padding: 0 20px 0 20px;
+    transform: translateY(0);
+    transition: all 0.5s ease;
+}
+
+.item-container.hidden {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+    /* 위로 올라가면서 사라지는 효과 */
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.open-btn,
+.close-btn {
+    float: right;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 4px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    padding: 2px 10px;
+    margin-left: 5px;
+}
+
+.close-btn:hover {
+    background-color: #2980b9;
+}
+
+.open-btn:hover {
+    background-color: #2980b9;
+}
+
+.div-header {
+    padding: 20px;
+    cursor: pointer;
+}
+
+#right_sidebar .active {
+    background-color: #eaf2ff;
+    font-weight: bold;
+    color: #007aff;
+}
+
+.li-active {
+    background-color: #eaf2ff;
+    font-weight: bold;
+    color: #007aff;
+}
+
+.checklist-btn-div {
+    padding-top: 20px;
+    padding-right: 20px;
+}
+
+.right-bar-title {
+    padding-bottom: 20px;
+}
+
+#scrollToTopBtn {
+    position: fixed;
+    bottom: 10px;
+    right: calc(15% + 20px);
+    padding: 10px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+#scrollToTopBtn.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 25.8px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    background-color: #ccc;
+    border-radius: 34px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: 0.4s;
+}
+
+.slider::before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+
+/* 체크된 상태 */
+input:checked+.slider {
+    background-color: #007bff;
+}
+
+input:checked+.slider::before {
+    transform: translateX(22px);
+}
+
+
+.div {
+    transition: background-color 0.5s ease;
+    -webkit-animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+.item {
+    -webkit-animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+@-webkit-keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
