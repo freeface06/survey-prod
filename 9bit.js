@@ -524,7 +524,7 @@ async function save() {
     }
 
     console.log(result);
-    return result;
+    alert(JSON.stringify(result, null, 2)); // 결과를 JSON 형태로 출력
 }
 
 // Helper: 파일들을 base64로 변환
